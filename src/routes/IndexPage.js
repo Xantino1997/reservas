@@ -118,11 +118,11 @@ function IndexPage() {
         </div>
         <div className="container-carrousel">
           <Container>
-            <Row>
-              <Col>
-                <h1 className="section-title">Viajes y Turismo</h1>
-                <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+            <Row >
+            <Col className="section-columnas">
+                <Tab.Container id="right-tabs-example" defaultActiveKey="first">
                   <Row className="columna-1">
+                    <h1 className="section-title">Viajes y Destinos</h1>
                     <Col className="columna-2" sm={3}>
                       <Nav variant="pills">
                         <Nav.Item>
@@ -137,55 +137,57 @@ function IndexPage() {
                       </Nav>
                     </Col>
                     <Col sm={9}>
-                      <Tab.Pane eventKey="first">
-                        <div className="container-carrousel">
-                          <Carousel>
-                            {renderCarouselItems(
-                              destinosImages,
-                              destinosRatings
-                            )}
-                          </Carousel>
-                          <LikesDislikes />
-                          <Link to="/destino" className="btn btn-primary">
-                            Ver Detalles
-                          </Link>
-                        </div>
-                      </Tab.Pane>
-
-                      <Tab.Pane eventKey="second">
-                        <div className="container-carrousel">
-                          <Carousel>
-                            {renderCarouselItems(
-                              destinosImages2,
-                              destinosRatings2
-                            )}
-                          </Carousel>
-                          <LikesDislikes />
-                          <Link to="/destino" className="btn btn-primary">
-                            Ver Detalles
-                          </Link>
-                        </div>
-                      </Tab.Pane>
-
-                      <Tab.Pane eventKey="third">
-                        <div className="container-carrousel">
-                          <Carousel>
-                            {renderCarouselItems(
-                              destinosImages,
-                              destinosRatings
-                            )}
-                          </Carousel>
-                          <LikesDislikes />
-                          <Link to="/destino" className="btn btn-primary">
-                            Ver Detalles
-                          </Link>
-                        </div>
-                      </Tab.Pane>
+                      <Tab.Content>
+                        <Tab.Pane eventKey="first">
+                          <div className="container-carrousel">
+                            <Carousel>
+                              {renderCarouselItems(
+                                destinosImages,
+                                destinosRatings
+                              )}
+                            </Carousel>
+                            <LikesDislikes />
+                            <Link to="/destinos" className="btn btn-primary">
+                              Ver Detalles
+                            </Link>
+                          </div>
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="second">
+                          <div className="container-carrousel">
+                            <Carousel>
+                              {renderCarouselItems(
+                               destinosImages2,
+                               destinosRatings2
+                              )}
+                            </Carousel>
+                            <LikesDislikes />
+                            <Link to="/destinos" className="btn btn-primary">
+                              Ver Detalles
+                            </Link>
+                          </div>
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="third">
+                          <div className="container-carrousel">
+                            <Carousel>
+                              {renderCarouselItems(
+                                hotelesImages,
+                                hotelesRatings
+                              )}
+                            </Carousel>
+                            <LikesDislikes />
+                            <Link to="/destinos" className="btn btn-primary">
+                              Ver Detalles
+                            </Link>
+                          </div>
+                        </Tab.Pane>
+                        {/* ... Otras pestañas de Destinos ... */}
+                      </Tab.Content>
                     </Col>
                   </Row>
                 </Tab.Container>
               </Col>
-              <Col>
+              
+              <Col className="section-columnas">
                 <Tab.Container id="right-tabs-example" defaultActiveKey="first">
                   <Row className="columna-1">
                     <h1 className="section-title">Hoteles</h1>
