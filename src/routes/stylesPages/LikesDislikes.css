@@ -1,0 +1,32 @@
+.likes-dislikes-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    margin: 0 auto;
+  }
+  
+  .like-button,
+  .dislike-button {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .like-button.active {
+    color: blue;
+  }
+  
+  .dislike-button.active {
+    color: blue;
+  }
+  
+  .like-count,
+  .dislike-count {
+    margin-left: 5px;
+    font-size: 16px;
+    color: #222;
+    font-weight: bold;
+  }
+  
