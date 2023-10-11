@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./stylesPages/IndexPage.css";
 import { Container, Row, Col, Nav, Tab, Carousel, Card } from "react-bootstrap";
@@ -145,7 +146,7 @@ function IndexPage() {
                             )}
                           </Carousel>
                           <LikesDislikes />
-                          <Link to="/destino1" className="btn btn-primary">
+                          <Link to="/destino" className="btn btn-primary">
                             Ver Detalles
                           </Link>
                         </div>
@@ -160,7 +161,7 @@ function IndexPage() {
                             )}
                           </Carousel>
                           <LikesDislikes />
-                          <Link to="/destino2" className="btn btn-primary">
+                          <Link to="/destino" className="btn btn-primary">
                             Ver Detalles
                           </Link>
                         </div>
@@ -175,7 +176,7 @@ function IndexPage() {
                             )}
                           </Carousel>
                           <LikesDislikes />
-                          <Link to="/destino3" className="btn btn-primary">
+                          <Link to="/destino" className="btn btn-primary">
                             Ver Detalles
                           </Link>
                         </div>
@@ -212,6 +213,9 @@ function IndexPage() {
                               )}
                             </Carousel>
                             <LikesDislikes />
+                            <Link to="/hoteles" className="btn btn-primary">
+                              Ver Detalles
+                            </Link>
                           </div>
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
@@ -223,6 +227,9 @@ function IndexPage() {
                               )}
                             </Carousel>
                             <LikesDislikes />
+                            <Link to="/hoteles" className="btn btn-primary">
+                              Ver Detalles
+                            </Link>
                           </div>
                         </Tab.Pane>
                         <Tab.Pane eventKey="third">
@@ -234,6 +241,9 @@ function IndexPage() {
                               )}
                             </Carousel>
                             <LikesDislikes />
+                            <Link to="/hoteles" className="btn btn-primary">
+                              Ver Detalles
+                            </Link>
                           </div>
                         </Tab.Pane>
                         {/* ... Otras pestañas de hoteles ... */}
