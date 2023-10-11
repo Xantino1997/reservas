@@ -22,37 +22,41 @@ import Secondhotel1 from "../assets/Secondhotel1.png";
 import Secondhotel2 from "../assets/Secondhotel2.png";
 import Secondhotel3 from "../assets/Secondhotel3.png";
 
-
 function IndexPage() {
   // Función para generar las estrellas en función del puntaje
   function renderStars(rating) {
     const stars = [];
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5;
-  
+
     for (let i = 0; i < fullStars; i++) {
-      stars.push(
-        <FontAwesomeIcon icon={faStar} className="star" key={i} />
-      );
+      stars.push(<FontAwesomeIcon icon={faStar} className="star" key={i} />);
     }
-  
+
     if (halfStar) {
       stars.push(
-        <FontAwesomeIcon icon={faStarHalf} className="star half-blue" key="half" />
+        <FontAwesomeIcon
+          icon={faStarHalf}
+          className="star half-blue"
+          key="half"
+        />
       );
     }
-  
+
     const emptyStars = 5 - (fullStars + (halfStar ? 1 : 0));
-  
+
     for (let i = 0; i < emptyStars; i++) {
       stars.push(
-        <FontAwesomeIcon icon={faStar} className="star empty-star" key={`empty-${i}`} />
+        <FontAwesomeIcon
+          icon={faStar}
+          className="star empty-star"
+          key={`empty-${i}`}
+        />
       );
     }
-  
+
     return <div className="star-rating">{stars}</div>;
   }
-  
 
   function renderCarouselItems(images, ratings) {
     return images.map((image, index) => (
@@ -73,14 +77,14 @@ function IndexPage() {
   ];
 
   const destinosRatings = [4.5, 5, 4];
-  
+
   const hotelesImages = [
     { src: hotel1, alt: "Hotel 1" },
     { src: hotel2, alt: "Hotel 2" },
     { src: hotel3, alt: "Hotel 3" },
   ];
 
-  const hotelesRatings = [4.5, 5, 3.5]; 
+  const hotelesRatings = [4.5, 5, 3.5];
 
   const destinosImages2 = [
     { src: Secondviaje1, alt: "Destino 1" },
@@ -89,7 +93,7 @@ function IndexPage() {
   ];
 
   const destinosRatings2 = [4.5, 5, 4.5];
-  
+
   const hotelesImages2 = [
     { src: Secondhotel1, alt: "Hotel 1" },
     { src: Secondhotel2, alt: "Hotel 2" },
@@ -106,7 +110,9 @@ function IndexPage() {
             <div className="header-video">
               <HeaderVideo />
             </div>
-            <h1 className="main-title"><q>Tu viaje empieza hoy</q></h1>
+            <h1 className="main-title">
+              <q>Tu viaje empieza hoy</q>
+            </h1>
           </div>
         </div>
         <div className="container-carrousel">
@@ -130,44 +136,50 @@ function IndexPage() {
                       </Nav>
                     </Col>
                     <Col sm={9}>
-                      <Tab.Content>
-                        <Tab.Pane eventKey="first">
-                          <div className="container-carrousel">
-                            <Carousel>
-                              {renderCarouselItems(
-                                destinosImages,
-                                destinosRatings,
+                      <Tab.Pane eventKey="first">
+                        <div className="container-carrousel">
+                          <Carousel>
+                            {renderCarouselItems(
+                              destinosImages,
+                              destinosRatings
+                            )}
+                          </Carousel>
+                          <LikesDislikes />
+                          <Link to="/destino1" className="btn btn-primary">
+                            Ver Detalles
+                          </Link>
+                        </div>
+                      </Tab.Pane>
 
-                              )}
-                            </Carousel>
-                            <LikesDislikes/>
+                      <Tab.Pane eventKey="second">
+                        <div className="container-carrousel">
+                          <Carousel>
+                            {renderCarouselItems(
+                              destinosImages2,
+                              destinosRatings2
+                            )}
+                          </Carousel>
+                          <LikesDislikes />
+                          <Link to="/destino2" className="btn btn-primary">
+                            Ver Detalles
+                          </Link>
+                        </div>
+                      </Tab.Pane>
 
-                          </div>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">
-                          <div className="container-carrousel">
-                            <Carousel>
-                              {renderCarouselItems(
-                                destinosImages2,
-                                destinosRatings2
-                              )}
-                            </Carousel>
-                            <LikesDislikes/>
-                          </div>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="third">
-                          <div className="container-carrousel">
-                            <Carousel>
-                              {renderCarouselItems(
-                                destinosImages,
-                                destinosRatings
-                              )}
-                            </Carousel>
-                            <LikesDislikes/>
-                          </div>
-                        </Tab.Pane>
-                        {/* ... Otras pestañas de destino ... */}
-                      </Tab.Content>
+                      <Tab.Pane eventKey="third">
+                        <div className="container-carrousel">
+                          <Carousel>
+                            {renderCarouselItems(
+                              destinosImages,
+                              destinosRatings
+                            )}
+                          </Carousel>
+                          <LikesDislikes />
+                          <Link to="/destino3" className="btn btn-primary">
+                            Ver Detalles
+                          </Link>
+                        </div>
+                      </Tab.Pane>
                     </Col>
                   </Row>
                 </Tab.Container>
@@ -199,7 +211,7 @@ function IndexPage() {
                                 hotelesRatings
                               )}
                             </Carousel>
-                            <LikesDislikes/>
+                            <LikesDislikes />
                           </div>
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
@@ -210,7 +222,7 @@ function IndexPage() {
                                 hotelesRatings2
                               )}
                             </Carousel>
-                            <LikesDislikes/>
+                            <LikesDislikes />
                           </div>
                         </Tab.Pane>
                         <Tab.Pane eventKey="third">
@@ -221,7 +233,7 @@ function IndexPage() {
                                 hotelesRatings
                               )}
                             </Carousel>
-                            <LikesDislikes/>
+                            <LikesDislikes />
                           </div>
                         </Tab.Pane>
                         {/* ... Otras pestañas de hoteles ... */}

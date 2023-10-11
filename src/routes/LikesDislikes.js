@@ -55,6 +55,7 @@ function LikesDislikes() {
         </button>
         <span className="dislike-count">{dislikes}</span>
       </div>
+      
     </div>
   );
 }
