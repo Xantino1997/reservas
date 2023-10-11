@@ -104,7 +104,7 @@ function IndexPage() {
         <div className="overlay">
           <div className="content">
             <div className="header-video">
-              {/* <HeaderVideo /> */}
+              <HeaderVideo />
             </div>
             <h1 className="main-title"><q>Tu viaje empieza hoy</q></h1>
           </div>
