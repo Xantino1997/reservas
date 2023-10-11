@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./stylesPages/HeaderVideo.css";
@@ -23,8 +23,31 @@ function HeaderVideo() {
   const { userInfo } = useContext(UserContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const fileInputRef = useRef(null);
+  const [videoUrl, setVideoUrl] = useState(
+    "https://cdn.pixabay.com/vimeo/230853032/coche-11490.mp4?width=1280&hash=9fa37df8dffcb2ab8760259ab51916604f2c7020"
+  );
 
   const roles = userInfo ? userInfo.role : "guest";
+
+  // Función para alternar la URL del video
+  const toggleVideoUrl = () => {
+    setVideoUrl((prevUrl) =>
+      prevUrl ===
+      "https://cdn.pixabay.com/vimeo/230853032/coche-11490.mp4?width=1280&hash=9fa37df8dffcb2ab8760259ab51916604f2c7020"
+        ? "https://cdn.pixabay.com/vimeo/308135855/mar-20223.mp4?width=1280&hash=22764ac489456b69e324b9ae03be1303a235b951"
+        : "https://cdn.pixabay.com/vimeo/230853032/coche-11490.mp4?width=1280&hash=9fa37df8dffcb2ab8760259ab51916604f2c7020"
+    );
+  };
+
+  // Usar setInterval para alternar la URL cada 15 minutos
+  useEffect(() => {
+    const intervalId = setInterval(toggleVideoUrl, 15 * 60 * 1000); // 15 minutos en milisegundos
+
+    // Limpia el interval cuando el componente se desmonta
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   const handleImageClick = () => {
     Swal.fire({
@@ -166,18 +189,9 @@ function HeaderVideo() {
       </nav>
 
       <video className="video-background" autoPlay loop muted>
-        <source
-          src="https://cdn.pixabay.com/vimeo/230853032/coche-11490.mp4?width=1280&hash=9fa37df8dffcb2ab8760259ab51916604f2c7020"
-          type="video/mp4"
-        />
-        <source
-          src="https://cdn.pixabay.com/vimeo/230853032/coche-11490.mp4?width=1280&hash=9fa37df8dffcb2ab8760259ab51916604f2c7020"
-          type="video/webm"
-        />
-        <source
-          src="https://cdn.pixabay.com/vimeo/230853032/coche-11490.mp4?width=1280&hash=9fa37df8dffcb2ab8760259ab51916604f2c7020"
-          type="video/ogg"
-        />
+        <source src={videoUrl} type="video/mp4" />
+        <source src={videoUrl} type="video/webm" />
+        <source src={videoUrl} type="video/ogg" />
         Tu navegador no admite la reproducción de video.
       </video>
       {/* <div className="container">
