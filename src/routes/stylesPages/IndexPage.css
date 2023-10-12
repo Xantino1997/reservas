@@ -9,6 +9,7 @@
 
 .container-carrousel {
   bottom: 0;
+  margin-top: 150px;
 }
 
 .section-columnas{
@@ -111,6 +112,7 @@
   position: absolute;
   animation: flash 6s infinite;
   animation-delay: 10s; 
+  z-index:15;
 }
 
 .main-title span {

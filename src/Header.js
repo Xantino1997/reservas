@@ -6,8 +6,21 @@ import "./styles/Header.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { UserContext } from "./UserContext";
-import user from "./assets/user.png";
+import LogoViaje from "./assets/logoTravel.png";
 import { useContext } from "react";
+import user from "./assets/user.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faUsers,
+  faBullhorn,
+  faSuitcase,
+  faPlane,
+  faSignOutAlt,
+  faSignInAlt,
+  faCloudUploadAlt,
+  faHandshake, // Importar el icono de manos estrechadas
+} from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
   const navigate = useNavigate();
@@ -17,6 +30,10 @@ function Header() {
   const [activeButton, setActiveButton] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
+
+
+  const roles = userInfo ? userInfo.role : "guest";
+
   // const { setUserInfo, user } = useUserContext(useUserContext);
   useEffect(() => {
     fetch(      
@@ -93,85 +110,142 @@ function Header() {
   };
 
   return (
-    <header className="header bg-primary">
-      <div className="container">
+    <header className="header">
+      {/* <div className="container">
         <div className="row align-items-center">
+        </div>
+      </div> */}
+        
+          <div className="col-lg-10">
+         
+          </div>
+       
+      <nav
+        className={`navbar-header justify-content-around navbar-expand-lg navbar-light ${
+          isMenuOpen ? "active" : ""
+        }`}
+      >
           <div className="col-lg-2">
-            <Link to="/" className="navbar-brand text-light">
-              Tu Logo
+            <Link to="/" className="navbar-link text-light">
+            <img className="navbar-imagen" src={LogoViaje} alt="Logo" />
             </Link>
           </div>
-          <div className="col-lg-10">
-          <nav className={`navbar navbar-expand-lg navbar-light ${isMenuOpen ? "active" : ""}`}>
-              <button
-                className="navbar-toggler"
-                type="button"
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={handleMenuToggle}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link
+                to="/"
+                className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse">
-                <ul className="navbar-nav ml-auto">
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-light" onClick={handleMenuToggle}>
-                      Inicio
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/sobre-nosotros" className="nav-link text-light" onClick={handleMenuToggle}>
-                      Sobre Nosotros
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/noticias" className="nav-link text-light" onClick={handleMenuToggle}>
-                      Noticias
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/comunidades" className="nav-link text-light" onClick={handleMenuToggle}>
-                      Comunidades
-                    </Link>
-                  </li>
-                  {/* Agregar más elementos del menú aquí */}
-                  {username ? (
-                    <>
-                      <li className="nav-item">
-                        <Link to="/crear-post" className="nav-link text-light" onClick={handleMenuToggle}>
-                          Crear Post
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link to="/subir-video" className="nav-link text-light" onClick={handleMenuToggle}>
-                          Subir video
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link to="#" className="nav-link text-light" onClick={() => { logout(); handleMenuToggle(); }}>
-                          Logout
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <img
-                          src={profilePicture}
-                          alt="Autor"
-                          className="autor-info-header-img rounded-circle"
-                          onClick={handleImageClick}
-                        />
-                      </li>
-                    </>
-                  ) : (
-                    <li className="nav-item">
-                      <Link to="/login" className="nav-link text-light" onClick={handleMenuToggle}>
-                        Iniciar sesión
-                      </Link>
-                    </li>
-                  )}
-                </ul>
-              </div>
-            </nav>
-          </div>
+                <FontAwesomeIcon icon={faHome} /> Inicio
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/sobre-nosotros"
+                className="nav-link text-light nav-link-routes"
+                onClick={handleMenuToggle}
+              >
+                <FontAwesomeIcon icon={faUsers} /> Sobre Nosotros
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/novedades"
+                className="nav-link text-light nav-link-routes"
+                onClick={handleMenuToggle}
+              >
+                <FontAwesomeIcon icon={faBullhorn} /> Novedades
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/reservas"
+                className="nav-link text-light nav-link-routes"
+                onClick={handleMenuToggle}
+              >
+                <FontAwesomeIcon icon={faSuitcase} /> Reservas
+              </Link>
+            </li>
+            <li className="nav-item">
+                  <Link
+                    to="/suma-tu-servicio"
+                    className="nav-link text-light nav-link-routes"
+                    onClick={handleMenuToggle}
+                  >
+                    <FontAwesomeIcon icon={faHandshake} /> Suma tu servicio
+                  </Link>
+                </li>
+
+            {roles === "user" && (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/tus-reservas"
+                    className="nav-link text-light nav-link-routes"
+                    onClick={handleMenuToggle}
+                  >
+                    <FontAwesomeIcon icon={faPlane} /> Tus Reservas
+                  </Link>
+                </li>
+              
+                <li className="nav-item">
+                  <Link
+                    to="/logout"
+                    className="nav-link text-light nav-link-routes"
+                    onClick={handleMenuToggle}
+                  >
+                    <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+                  </Link>
+                </li>
+              </>
+            )}
+
+            {roles === "admin" && (
+              <li className="nav-item">
+                <Link
+                  to="/subir-hotel-destino"
+                  className="nav-link text-light nav-link-routes"
+                  onClick={handleMenuToggle}
+                >
+                  <FontAwesomeIcon icon={faCloudUploadAlt} /> Subir
+                  Hotel-Destino
+                </Link>
+              </li>
+            )}
+
+            {userInfo ? (
+              <li className="nav-item">
+                <Link
+                  to="/login"
+                  className="nav-link text-light nav-link-routes"
+                  onClick={handleMenuToggle}
+                >
+                  <FontAwesomeIcon icon={faSignInAlt} /> Iniciar sesión
+                </Link>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <img
+                  src={profilePicture}
+                  alt="Perfil"
+                  className="perfil-img rounded-circle"
+                  onClick={handleImageClick}
+                />
+              </li>
+            )}
+          </ul>
         </div>
-      </div>
+      </nav>
+
     </header>
   );
 }

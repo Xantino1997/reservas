@@ -1,24 +1,28 @@
 .header-video{
     position: relative;
     width: 100%;
-    color: transparent;
     height: 40%;
-    background:#fff;
+    top:0;
+    background:transparent;
     
   }
   
-
-/* .video-container{
-    position: relative;
+.video-container-busqueda {
+    position: absolute;
+    bottom:0%;
+    left: 0;
     width: 100%;
-} */
+    height: 20%;
+    background-color: rgba(255, 255, 255, 0.5); 
+    z-index: 15; 
+  }
 .video-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); 
+    background-color: rgba(0, 0, 0, 0.5); 
     z-index: 1; 
   }
   
@@ -41,27 +45,24 @@
 .nav-link-routes{
     display: flex;
     margin-left: 50px;
-    background-color: rgba(0, 0, 0, 0.7);
     justify-content: space-around;
     z-index:15;
-    padding:10px;
-    border-radius: 15px;
-    border: 3px solid rgba(0, 0, 0, 0.7)
+    border: 5px solid transparent;
+    display:flex;
 }
 .nav-link-routes:hover{
-    background-color: transparent;
-    border: 3px solid #fa0f0f;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.7);
     cursor: pointer;
-    border-radius: 15px;
 }
 
 .navbar-brand img {
     position: absolute;
     border-radius: 50%;
-    background:blue;
-    width: 10%;
-    top:5%;
+    width: 100%;
+    padding: 10px;
+    left: 50%;
+    top:10%;
     z-index:15;
-
+    background-color: orange;
   }
   

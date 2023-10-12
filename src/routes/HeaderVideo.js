@@ -7,6 +7,7 @@ import LogoViaje from "../assets/logoTravel.png";
 import { useContext } from "react";
 import profilePicture from "../assets/user.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Buscador from "./Buscador";
 import {
   faHome,
   faUsers,
@@ -16,6 +17,7 @@ import {
   faSignOutAlt,
   faSignInAlt,
   faCloudUploadAlt,
+  faHandshake, // Importar el icono de manos estrechadas
 } from "@fortawesome/free-solid-svg-icons";
 
 function HeaderVideo() {
@@ -69,14 +71,15 @@ function HeaderVideo() {
 
   return (
     <header className="header-video">
-      <div className="video-container">
-        <div className="col-lg-2">
-          <Link to="/" className="navbar-brand text-light">
-            <img src={LogoViaje} alt="Logo" />
-          </Link>
-        </div>
+      <div className="video-container-busqueda">
+        <Buscador/>
       </div>
       <div className="video-overlay"></div>
+      <div className="col-lg-2">
+          <Link to="/" className="navbar-link text-light">
+            <img className="navbar-imagen" src={LogoViaje} alt="Logo" />
+          </Link>
+        </div>
       <nav
         className={`navbar justify-content-around navbar-expand-lg navbar-light ${
           isMenuOpen ? "active" : ""
@@ -127,6 +130,15 @@ function HeaderVideo() {
                 <FontAwesomeIcon icon={faSuitcase} /> Reservas
               </Link>
             </li>
+            <li className="nav-item">
+                  <Link
+                    to="/suma-tu-servicio"
+                    className="nav-link text-light nav-link-routes"
+                    onClick={handleMenuToggle}
+                  >
+                    <FontAwesomeIcon icon={faHandshake} /> Suma tu servicio
+                  </Link>
+                </li>
 
             {roles === "user" && (
               <>
@@ -139,6 +151,7 @@ function HeaderVideo() {
                     <FontAwesomeIcon icon={faPlane} /> Tus Reservas
                   </Link>
                 </li>
+              
                 <li className="nav-item">
                   <Link
                     to="/logout"
@@ -194,11 +207,7 @@ function HeaderVideo() {
         <source src={videoUrl} type="video/ogg" />
         Tu navegador no admite la reproducción de video.
       </video>
-      {/* <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-10"></div>
-        </div>
-      </div> */}
+    
     </header>
   );
 }

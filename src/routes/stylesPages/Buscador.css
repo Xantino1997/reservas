@@ -1,0 +1,100 @@
+.buscador-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.busqueda-general {
+  background-color: #ccc;
+  padding: 50px;
+  margin: 60px 60px 0 60px;
+  width: 100%;
+  overflow:hidden;
+}
+
+/* Clases para transiciones */
+.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.buscador-container .busqueda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.buscador-container .busqueda input {
+  border: none;
+  flex: 1;
+  padding: 10px;
+  margin: 10px;
+}
+
+.buscador-container .busqueda button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  background: #007bff;
+}
+
+.buscador-container .busqueda button svg {
+  font-size: 20px;
+  margin: 15px;
+}
+
+.buscador-container .fechas input {
+  margin-right: 10px;
+  margin: 15px;
+}
+
+.buscador-container .seleccion {
+  display: flex;
+  margin-top: 10px;
+}
+.rapid-move {
+  animation: move 1s linear;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.buscador-container select {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  color: #000;
+  font-weight:bold;
+}
+
+.title.hidden {
+  opacity: 0;
+}
