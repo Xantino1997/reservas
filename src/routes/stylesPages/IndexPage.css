@@ -38,7 +38,7 @@
   margin-top: 500px;
   margin-bottom: 100px;
   padding-bottom: 50px;
-  background-color: #999;
+  background-color: #fff;
 }
 
 
@@ -50,6 +50,7 @@
   margin-top:50px;
   margin-bottom:50px;
   background-color: #ccc;
+  
   padding: 50px; /* Espacio superior para centrar elementos en pantalla */
 }
 .carrousel-item  {
@@ -161,6 +162,7 @@
   justify-content: space-around;
   width: 100%;
   background-color: #fff;
+  
   margin-top: 15px;
   text-align: center;
 }
@@ -170,6 +172,7 @@
   justify-content: space-around;
   width: 100%;
   text-align: center;
+  background:#fff;
 }
 
 
@@ -190,8 +193,10 @@
   position:absolute;
   top: 2900px;
   width: 100%;
-  background:red;
+
 }
+
+
 
 .container-general{
   margin-top:900px;
@@ -201,6 +206,7 @@
   justify-content: center;
   align-items: center;
   background:#fff;
+
   
 }
 
@@ -217,6 +223,7 @@
   width:100%;
   display:flex;
   flex-direction:column;
+  background:#ccc;
   
 }
 
@@ -226,7 +233,7 @@
   object-fit: contain;
 }
 
-/* .content {
+.content {
   z-index: 5;
   color: white;
   text-align: center;
@@ -238,7 +245,7 @@
   flex-direction: row;
   background-color: #000;
 
-} */
+}
 
 
 .container-carrousel-general {
@@ -376,6 +383,7 @@
   margin-top: 15px;
   text-align: center;
   flex-direction: column;
+  background:#fff;
 }
 .columna-2{
   display:flex;
@@ -383,6 +391,7 @@
   width: 100%;
   text-align: center;
   flex-direction: column;
+
 
 }
 }
