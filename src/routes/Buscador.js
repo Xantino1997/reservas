@@ -58,7 +58,7 @@ const Buscador = () => {
         precio: 180,
         puntaje: 1,
         img: hotelImg,
-        disponibilidad: false,
+        disponibilidad: true,
         destino: "Murcia",
         habitaciones: 6,
       },
@@ -145,7 +145,17 @@ const Buscador = () => {
       },
     ];
 
-    const resultadosOrdenados = resultadosDeBusqueda.sort((a, b) => {
+    const resultadosFiltrados = resultadosDeBusqueda.filter((hotel) => {
+      const buscaDestino = hotel.destino
+        .toLowerCase()
+        .includes(busqueda.toLowerCase());
+      const buscaNombre = hotel.nombre
+        .toLowerCase()
+        .includes(busqueda.toLowerCase());
+      return buscaDestino || buscaNombre;
+    });
+
+    const resultadosOrdenados = resultadosFiltrados.sort((a, b) => {
       if (a.disponibilidad === b.disponibilidad) {
         return 0;
       }
@@ -238,9 +248,15 @@ const Buscador = () => {
                           {hotel.disponibilidad ? "Si" : "No"}
                         </span>
                       </p>
+                      <p>
+                        Localidad:
+                        <span>{hotel.destino}</span>
+                      </p>
                       {hotel.disponibilidad ? (
                         <p>{hotel.habitaciones} habitaciones disponibles</p>
-                      ) : null}
+                      ) : (
+                        <p>No hay habitaciones disponibles</p>
+                      )}
                       <Link to="/suma-tu-servicio" className="reservas-buttom">
                         Reserva
                       </Link>
@@ -256,6 +272,7 @@ const Buscador = () => {
                     />
                     <p>Precio: ${hotel.precio}</p>
                     <p>Puntaje: {hotel.puntaje} estrellas</p>
+
                     <p>
                       Disponibilidad:{" "}
                       <span
@@ -266,9 +283,15 @@ const Buscador = () => {
                         {hotel.disponibilidad ? "Si" : "No"}
                       </span>
                     </p>
+                    <p>
+                      Localidad:
+                      <span>{hotel.destino}</span>
+                    </p>
                     {hotel.disponibilidad ? (
                       <p>{hotel.habitaciones} habitaciones disponibles</p>
-                    ) : null}
+                    ) : (
+                      <p>No hay habitaciones disponibles</p>
+                    )}
                     <Link to="/suma-tu-servicio" className="reservas-buttom">
                       Reserva
                     </Link>
