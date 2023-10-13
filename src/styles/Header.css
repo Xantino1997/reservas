@@ -105,9 +105,9 @@
   .navbar-imagen{
     position: absolute;
     border-radius: 50%;
-    width: 500%;
+    width: 400%;
     padding: 1px;
-    left: 0%;
+    right: -500%;
     top:10%;
     z-index:15;
     background-color: blue;

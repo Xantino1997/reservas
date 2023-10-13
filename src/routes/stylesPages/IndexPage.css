@@ -184,6 +184,14 @@
   background:#ccc;
 }
 
+.footer-div{
+  display: flex;
+  flex-direction: column;
+  position:absolute;
+  top: 3100px;
+  width: 100%;
+  background:red;
+}
 
 .container-general{
   margin-top:900px;

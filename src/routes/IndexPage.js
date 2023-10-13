@@ -111,7 +111,6 @@ function IndexPage() {
 
   const hotelesRatings2 = [4.0, 5, 4.5];
 
-
   const destinosImages3 = [
     { src: destino1, alt: "Destino 1" },
     { src: destino2, alt: "Destino 2" },
@@ -141,11 +140,11 @@ function IndexPage() {
             </h1>
           </div>
         </div>
-        
+
         <div className="container-carrousel-general">
           <Container className="container-general">
             <Row className="section-columnas-pricipal">
-            <Col className="section-columnas">
+              <Col className="section-columnas">
                 <Tab.Container id="right-tabs-example" defaultActiveKey="first">
                   <Row className="columna-1">
                     <h1 className="section-title">Viajes y Destinos</h1>
@@ -182,8 +181,8 @@ function IndexPage() {
                           <div className="container-carrousel">
                             <Carousel>
                               {renderCarouselItems(
-                               destinosImages2,
-                               destinosRatings2
+                                destinosImages2,
+                                destinosRatings2
                               )}
                             </Carousel>
                             <LikesDislikes />
@@ -196,8 +195,8 @@ function IndexPage() {
                           <div className="container-carrousel">
                             <Carousel>
                               {renderCarouselItems(
-                               destinosImages3,
-                               destinosRatings3
+                                destinosImages3,
+                                destinosRatings3
                               )}
                             </Carousel>
                             <LikesDislikes />
@@ -212,15 +211,17 @@ function IndexPage() {
                   </Row>
                 </Tab.Container>
               </Col>
-              
+
               <Col className="section-columnas">
-                <Tab.Container id="right-tabs-example" defaultActiveKey="first" >
+                <Tab.Container id="right-tabs-example" defaultActiveKey="first">
                   <Row className="columna-1">
                     <h1 className="section-title">Hoteles</h1>
                     <Col className="columna-2" sm={3}>
                       <Nav variant="pills">
                         <Nav.Item>
-                          <Nav.Link eventKey="first">Hotel Emperador 2</Nav.Link>
+                          <Nav.Link eventKey="first">
+                            Hotel Emperador 2
+                          </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                           <Nav.Link eventKey="second">Fenix Found</Nav.Link>
@@ -283,8 +284,11 @@ function IndexPage() {
             </Row>
           </Container>
         </div>
+        <div className="footer-div">
         <Footer />
       </div>
+      </div>
+    
     </>
   );
 }
