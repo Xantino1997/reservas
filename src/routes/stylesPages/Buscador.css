@@ -165,7 +165,7 @@ width: 50%;
   
   .ordenar-container{
     text-align: center;
-    width: 100%;
+    width: 50%;
     display:flex;
     justify-content: center;
     flex-direction: column;
@@ -300,7 +300,7 @@ width: 50%;
   .cerrar-ver-btn{
     display:flex;
     width: 100%;
-    margin:15px;
+    margin-right:45px;
   }
   
   

@@ -143,7 +143,7 @@ function IndexPage() {
         </div>
         
         <div className="container-carrousel-general">
-          <Container >
+          <Container className="container-general">
             <Row className="section-columnas-pricipal">
             <Col className="section-columnas">
                 <Tab.Container id="right-tabs-example" defaultActiveKey="first">
