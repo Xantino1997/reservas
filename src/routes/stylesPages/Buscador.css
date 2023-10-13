@@ -147,3 +147,161 @@ width: 50%;
   width: 100%;
   margin:15px;
 }
+
+
+
+@media (min-width: 120px) and (max-width: 767px){
+  .buscador-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+  
+  .ordenar-container{
+    text-align: center;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .ordenar{
+    background: #027bff;
+    text-align: center;
+    padding:15px;
+    padding-left:5px;
+    width: 100%;
+    display:flex;
+
+  }
+  
+  .busqueda-general {
+    background-color: #ccc;
+    width: 100%;
+    left: 1%;
+    overflow: hidden;
+  }
+  
+  /* Clases para transiciones */
+  .fade-in {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .buscador-container .busqueda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .reservas-buttom {
+    background: #007bff;
+    padding: 10px;
+    color: #fff;
+  }
+  .buscador-container .busqueda input {
+    border: none;
+    flex: 1;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .buscador-container .busqueda button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px;
+    background: #007bff;
+  }
+  
+  .buscador-container .busqueda button svg {
+    font-size: 20px;
+    margin: 15px;
+  }
+  
+  
+  
+  .buscador-container .seleccion {
+    display: flex;
+    margin-top: 10px;
+  }
+  .rapid-move {
+    animation: move 1s linear;
+  }
+  
+  @keyframes move {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  
+  .div-seleccion {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .div-seleccion-titulo{
+    color: #000;
+  }
+  .img-container {
+    display: flex;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .img-seleccion {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+  }
+  
+  .img-seleccion-busqueda{
+  width: 50%;
+  }
+  .title {
+    font-size: 24px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .title.hidden {
+    opacity: 0;
+  }
+  .cerrar-ver{
+    display:flex;
+    justify-content:space-around;
+    width: 100%;
+    background-color: #390c3b;
+  }
+  .cerrar-ver-btn{
+    display:flex;
+    width: 100%;
+    margin:15px;
+  }
+  
+  
+}

@@ -143,8 +143,8 @@ function IndexPage() {
         </div>
         
         <div className="container-carrousel-general">
-          <Container>
-            <Row >
+          <Container >
+            <Row className="section-columnas-pricipal">
             <Col className="section-columnas">
                 <Tab.Container id="right-tabs-example" defaultActiveKey="first">
                   <Row className="columna-1">
@@ -214,7 +214,7 @@ function IndexPage() {
               </Col>
               
               <Col className="section-columnas">
-                <Tab.Container id="right-tabs-example" defaultActiveKey="first">
+                <Tab.Container id="right-tabs-example" defaultActiveKey="first" >
                   <Row className="columna-1">
                     <h1 className="section-title">Hoteles</h1>
                     <Col className="columna-2" sm={3}>
