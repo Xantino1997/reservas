@@ -188,7 +188,7 @@
   display: flex;
   flex-direction: column;
   position:absolute;
-  top: 3100px;
+  top: 2900px;
   width: 100%;
   background:red;
 }
@@ -200,12 +200,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background:#fff;
   
 }
 
 
 .section-columnas-pricipal{
-  width:100%;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -217,6 +217,7 @@
   width:100%;
   display:flex;
   flex-direction:column;
+  
 }
 
 .imagen-viaje {
@@ -225,7 +226,7 @@
   object-fit: contain;
 }
 
-.content {
+/* .content {
   z-index: 5;
   color: white;
   text-align: center;
@@ -237,7 +238,7 @@
   flex-direction: row;
   background-color: #000;
 
-}
+} */
 
 
 .container-carrousel-general {
@@ -255,7 +256,7 @@
   text-align: center;
   margin-top:50px;
   margin-bottom:50px;
-  background-color: #ccc;
+  background-color: #fff;
   padding: 50px; /* Espacio superior para centrar elementos en pantalla */
 }
 .carrousel-item  {
@@ -363,18 +364,19 @@
   border-radius: 5px;
 }
 
-.columna-1{
+.columna-2{
   display:flex;
-  width: 100%;
   justify-content: space-around;
-  background-color: #fff;
   margin-top: 15px;
   text-align: center;
+  flex-direction: column;
 }
 .columna-2{
   display:flex;
   justify-content: space-around;
   width: 100%;
   text-align: center;
+  flex-direction: column;
+
 }
 }

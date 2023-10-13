@@ -214,7 +214,7 @@ function IndexPage() {
 
               <Col className="section-columnas">
                 <Tab.Container id="right-tabs-example" defaultActiveKey="first">
-                  <Row className="columna-1">
+                  <Row className="columna-2">
                     <h1 className="section-title">Hoteles</h1>
                     <Col className="columna-2" sm={3}>
                       <Nav variant="pills">
