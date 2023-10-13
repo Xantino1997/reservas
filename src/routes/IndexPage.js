@@ -116,7 +116,8 @@ function IndexPage() {
             </h1>
           </div>
         </div>
-        <div className="container-carrousel">
+        
+        <div className="container-carrousel-general">
           <Container>
             <Row >
             <Col className="section-columnas">
