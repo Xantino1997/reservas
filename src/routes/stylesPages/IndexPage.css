@@ -61,6 +61,7 @@
 
 .star {
   color: yellow; 
+  background-color:red;
 }
 
 .star-rating .half-star {
@@ -72,7 +73,7 @@
 
 
 .empty-star {
-  color: red; 
+  color: white; 
 }
 
 .star-rating {

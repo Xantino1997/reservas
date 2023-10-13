@@ -23,6 +23,14 @@ import Secondhotel1 from "../assets/Secondhotel1.png";
 import Secondhotel2 from "../assets/Secondhotel2.png";
 import Secondhotel3 from "../assets/Secondhotel3.png";
 
+import destino1 from "../assets/destino1.png";
+import destino2 from "../assets/destino2.png";
+import destino3 from "../assets/destino3.png";
+
+import thirdhotel1 from "../assets/hotelDestino1.png";
+import thirdhotel2 from "../assets/hotelDestino2.png";
+import thirdhotel3 from "../assets/hotelDestino3.png";
+
 function IndexPage() {
   // Función para generar las estrellas en función del puntaje
   function renderStars(rating) {
@@ -103,6 +111,23 @@ function IndexPage() {
 
   const hotelesRatings2 = [4.0, 5, 4.5];
 
+
+  const destinosImages3 = [
+    { src: destino1, alt: "Destino 1" },
+    { src: destino2, alt: "Destino 2" },
+    { src: destino3, alt: "Destino 3" },
+  ];
+
+  const destinosRatings3 = [4.5, 5, 4.5];
+
+  const hotelesImages3 = [
+    { src: thirdhotel1, alt: "Hotel 1" },
+    { src: thirdhotel2, alt: "Hotel 2" },
+    { src: thirdhotel3, alt: "Hotel 3" },
+  ];
+
+  const hotelesRatings3 = [4.0, 5, 4.5];
+
   return (
     <>
       <div className="container-viajes">
@@ -127,13 +152,13 @@ function IndexPage() {
                     <Col className="columna-2" sm={3}>
                       <Nav variant="pills">
                         <Nav.Item>
-                          <Nav.Link eventKey="first">Destino 1</Nav.Link>
+                          <Nav.Link eventKey="first">Cataratas</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="second">Destino 2</Nav.Link>
+                          <Nav.Link eventKey="second">Rio de Janeiro</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="third">Destino 3</Nav.Link>
+                          <Nav.Link eventKey="third">Eritrea</Nav.Link>
                         </Nav.Item>
                       </Nav>
                     </Col>
@@ -171,8 +196,8 @@ function IndexPage() {
                           <div className="container-carrousel">
                             <Carousel>
                               {renderCarouselItems(
-                                hotelesImages,
-                                hotelesRatings
+                               destinosImages3,
+                               destinosRatings3
                               )}
                             </Carousel>
                             <LikesDislikes />
@@ -195,13 +220,13 @@ function IndexPage() {
                     <Col className="columna-2" sm={3}>
                       <Nav variant="pills">
                         <Nav.Item>
-                          <Nav.Link eventKey="first">Hotel 1</Nav.Link>
+                          <Nav.Link eventKey="first">Hotel Emperador 2</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="second">Hotel 2</Nav.Link>
+                          <Nav.Link eventKey="second">Fenix Found</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="third">Hotel 3</Nav.Link>
+                          <Nav.Link eventKey="third">Hotel Franckfurt</Nav.Link>
                         </Nav.Item>
                       </Nav>
                     </Col>
@@ -239,8 +264,8 @@ function IndexPage() {
                           <div className="container-carrousel">
                             <Carousel>
                               {renderCarouselItems(
-                                hotelesImages,
-                                hotelesRatings
+                                hotelesImages3,
+                                hotelesRatings3
                               )}
                             </Carousel>
                             <LikesDislikes />

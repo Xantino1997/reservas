@@ -21,8 +21,8 @@ import { Link } from "react-router-dom";
 
 const Buscador = () => {
   const [busqueda, setBusqueda] = useState("");
-  const [fechaInicio, setFechaInicio] = useState("");
-  const [fechaFin, setFechaFin] = useState("");
+  // const [fechaInicio, setFechaInicio] = useState("");
+  // const [fechaFin, setFechaFin] = useState("");
   const [resultados, setResultados] = useState([]);
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [mostrarTodos, setMostrarTodos] = useState(false);
