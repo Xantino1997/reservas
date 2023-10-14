@@ -235,7 +235,7 @@ function IndexPage() {
                       <Tab.Content>
                         <Tab.Pane eventKey="first">
                           <div className="container-carrousel">
-                            <Carousel>
+                            <Carousel >
                               {renderCarouselItems(
                                 hotelesImages,
                                 hotelesRatings

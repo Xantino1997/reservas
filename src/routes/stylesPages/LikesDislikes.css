@@ -33,3 +33,41 @@
     font-weight: bold;
   }
   
+
+  @media (min-width: 120px) and (max-width: 767px) {
+    .likes-dislikes-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 180px;
+      background-color: #000;
+      margin: 0 auto;
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+    
+    .like-button,
+    .dislike-button {
+      border: none;
+      background: transparent;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    
+    .like-button.active {
+      color: white;
+    }
+    
+    .dislike-button.active {
+      color: white;
+    }
+    
+    .like-count,
+    .dislike-count {
+      margin-left: 5px;
+      font-size: 16px;
+      color: #fff;
+      font-weight: bold;
+    }
+    
+  }

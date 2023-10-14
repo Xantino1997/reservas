@@ -50,7 +50,6 @@
   margin-top:50px;
   margin-bottom:50px;
   background-color: #ccc;
-  
   padding: 50px; /* Espacio superior para centrar elementos en pantalla */
 }
 .carrousel-item  {
@@ -202,12 +201,11 @@
   margin-top:900px;
   position: absolute;
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background:#fff;
-
-  
+  /* background:#ccc; */
 }
 
 
@@ -216,7 +214,6 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background:#ccc;
 
 }
 .section-columnas{
@@ -224,7 +221,8 @@
   display:flex;
   flex-direction:column;
   background:#ccc;
-  
+  justify-content: center;
+  align-items: center;
 }
 
 .imagen-viaje {
@@ -271,7 +269,10 @@
   height: auto;
   
 }
-
+.container-carousel img {
+  max-width: 100%; 
+  height: auto; 
+}
 .star {
   color: yellow; 
   background-color:red;
@@ -391,7 +392,5 @@
   width: 100%;
   text-align: center;
   flex-direction: column;
-
-
 }
 }
