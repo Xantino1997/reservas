@@ -5,7 +5,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/products") // Ajusta la ruta según tu configuración
+    fetch("https://backend-reservas.vercel.app/products") // Ajusta la ruta según tu configuración
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching data", error));

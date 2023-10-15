@@ -39,7 +39,7 @@ function Header() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/profile`, {
+    fetch(`https://backend-reservas.vercel.app/profile`, {
       credentials: "include",
     })
       .then((response) => {
@@ -59,7 +59,7 @@ function Header() {
 
   async function logout() {
     try {
-      await fetch("http://localhost:4000/logout", {
+      await fetch("https://backend-reservas.vercel.app/logout", {
         credentials: "include",
         method: "POST",
       });
