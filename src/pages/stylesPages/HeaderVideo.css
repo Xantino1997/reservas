@@ -6,7 +6,9 @@
     background:transparent;
     
   }
-  
+  .perfil-img{
+    width: 10%;
+  }
 .video-container-busqueda {
     position: absolute;
     bottom:0%;
@@ -34,8 +36,8 @@
 .navbar{
     display: flex;
     position: absolute;
-    left: 350px;
-    top: 5%;
+    left: 0px;
+    top: 1%;
     justify-content: space-around;
     background:transparent;
     z-index:15;
