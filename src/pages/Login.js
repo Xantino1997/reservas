@@ -4,7 +4,7 @@ import { faUser, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../UserContext'; // Importa el contexto de usuario
-import './stylesPages/Comprar.css';
+import './stylesPages/Login.css';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
