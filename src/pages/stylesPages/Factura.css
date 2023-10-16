@@ -1,0 +1,40 @@
+.factura-container {
+    margin: 0 auto;
+    position:absolute;
+    border: 1px solid #000;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+}
+.perfil-img {
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 50%;
+  }
+.factura {
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.factura-header img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.descargar-btn, .compartir-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.descargar-btn:hover, .compartir-btn:hover {
+    background-color: #45a049;
+}

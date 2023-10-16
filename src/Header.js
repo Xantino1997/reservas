@@ -29,7 +29,6 @@ function Header() {
   const [activeButton, setActiveButton] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
-  const roles = userInfo ? userInfo.role : "guest";
   const totalReservas = 0;
 
   const handleLogout = () => {
@@ -56,44 +55,6 @@ function Header() {
         console.error("Error al obtener datos de perfil:", error);
       });
   }, []);
-
-  async function logout() {
-    try {
-      await fetch("https://backend-reservas.vercel.app/logout", {
-        credentials: "include",
-        method: "POST",
-      });
-
-      setUserInfo(null);
-
-      setRedirect(true);
-      Swal.fire({
-        title: `¡Hasta luego, ${userInfo.username}!`,
-        icon: "success",
-        timer: 5000,
-        showConfirmButton: false,
-      }).then(() => {
-        // Limpiar el usuario de UserContext (ajusta esto según tu implementación)
-        setUserInfo(""); // Esto depende de cómo se implementó el contexto de usuario en tu aplicación
-        // navigate("/redirigiendo");
-      });
-    } catch (error) {
-      console.error("Error:", error);
-      // Mostrar mensaje de error si ocurre un error inesperado
-      Swal.fire({
-        title: "Error",
-        text: "Ocurrió un error al cerrar sesión",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
-    }
-  }
-
-  // useEffect(() => {
-  //   if (redirect) {
-  //     navigate("/redirigiendo");
-  //   }
-  // }, [redirect]);
 
   const username = userInfo?.username;
   const profilePicture = userInfo?.profilePicture || user;
@@ -152,7 +113,7 @@ function Header() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faHome} /> Inicio
+                <FontAwesomeIcon icon={faHome} style={{ marginRight: "10px" }}/> Inicio
               </Link>
             </li>
 
@@ -162,7 +123,7 @@ function Header() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faUsers} /> About
+                <FontAwesomeIcon icon={faUsers} style={{ marginRight: "10px" }}/> About
               </Link>
             </li>
             <li className="nav-item">
@@ -171,7 +132,7 @@ function Header() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faBullhorn} /> Novedades
+                <FontAwesomeIcon icon={faBullhorn} style={{ marginRight: "10px" }}/> Novedades
               </Link>
             </li>
             <li className="nav-item">
@@ -180,7 +141,7 @@ function Header() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faSuitcase} /> Reservas
+                <FontAwesomeIcon icon={faSuitcase} style={{ marginRight: "10px" }}/> Reservas
               </Link>
             </li>
             <li className="nav-item">
@@ -189,7 +150,7 @@ function Header() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faHandshake} /> Viaja
+                <FontAwesomeIcon icon={faHandshake} style={{ marginRight: "10px" }}/> Viaja
               </Link>
             </li>
 
@@ -201,7 +162,7 @@ function Header() {
                     className="nav-link text-light nav-link-routes"
                     onClick={handleMenuToggle}
                   >
-                    <FontAwesomeIcon icon={faPlane} /> Tus Reservas
+                    <FontAwesomeIcon icon={faPlane} style={{ marginRight: "10px" }}/> Tus Reservas
                   </Link>
                 </li>
               </>
@@ -211,11 +172,20 @@ function Header() {
               <>
                 <li className="nav-item">
                   <Link
+                    to="/comprar-edit"
+                    className="nav-link text-light nav-link-routes"
+                    onClick={handleMenuToggle}
+                  >
+                    <FontAwesomeIcon icon={faHandshake} style={{ marginRight: "10px" }}/> Edit Viaja
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
                     to="/subir-hotel-destino"
                     className="nav-link text-light nav-link-routes"
                     onClick={handleMenuToggle}
                   >
-                    <FontAwesomeIcon icon={faCloudUploadAlt} /> Cargar
+                    <FontAwesomeIcon icon={faCloudUploadAlt} style={{ marginRight: "10px" }}/> Cargar
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -229,7 +199,7 @@ function Header() {
                       textDecoration: "none",
                     }}
                   >
-                    <FontAwesomeIcon icon={faSuitcase} />
+                    <FontAwesomeIcon icon={faSuitcase} style={{ marginRight: "10px" }}/>
                     Total reservas:
                     <div
                       style={{
@@ -271,7 +241,7 @@ function Header() {
                     className="nav-link text-light nav-link-routes"
                     onClick={handleLogout}
                   >
-                    <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+                    <FontAwesomeIcon icon={faSignOutAlt} style={{ marginRight: "10px" }}/> Logout
                   </Link>
                 </li>
               </>
@@ -282,7 +252,7 @@ function Header() {
                   className="nav-link text-light nav-link-routes"
                   onClick={handleMenuToggle}
                 >
-                  <FontAwesomeIcon icon={faSignInAlt} /> Iniciar sesión
+                  <FontAwesomeIcon icon={faSignInAlt} style={{ marginRight: "10px" }}/> Iniciar sesión
                 </Link>
               </li>
             )}

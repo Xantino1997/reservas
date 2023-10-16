@@ -8,6 +8,7 @@ import { useContext } from "react";
 import user from "../assets/user.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Buscador from "./Buscador";
+
 import {
   faHome,
   faUsers,
@@ -111,7 +112,7 @@ function HeaderVideo() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faHome} /> Inicio
+                <FontAwesomeIcon icon={faHome} style={{ marginRight: "10px" }}/> Inicio
               </Link>
             </li>
 
@@ -121,7 +122,7 @@ function HeaderVideo() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faUsers} /> About
+                <FontAwesomeIcon icon={faUsers} style={{ marginRight: "10px" }}/> About
               </Link>
             </li>
             <li className="nav-item">
@@ -130,7 +131,7 @@ function HeaderVideo() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faBullhorn} /> Novedades
+                <FontAwesomeIcon icon={faBullhorn} style={{ marginRight: "10px" }}/> Novedades
               </Link>
             </li>
             <li className="nav-item">
@@ -139,7 +140,7 @@ function HeaderVideo() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faSuitcase} /> Reservas
+                <FontAwesomeIcon icon={faSuitcase} style={{ marginRight: "10px" }}/> Reservas
               </Link>
             </li>
             <li className="nav-item">
@@ -148,7 +149,7 @@ function HeaderVideo() {
                 className="nav-link text-light nav-link-routes"
                 onClick={handleMenuToggle}
               >
-                <FontAwesomeIcon icon={faHandshake} /> Viaja
+                <FontAwesomeIcon icon={faHandshake} style={{ marginRight: "10px" }}/> Viaja
               </Link>
             </li>
 
@@ -160,7 +161,7 @@ function HeaderVideo() {
                     className="nav-link text-light nav-link-routes"
                     onClick={handleMenuToggle}
                   >
-                    <FontAwesomeIcon icon={faPlane} /> Tus Reservas
+                    <FontAwesomeIcon icon={faPlane}style={{ marginRight: "10px" }} /> Tus Reservas
                   </Link>
                 </li>
               </>
@@ -170,11 +171,20 @@ function HeaderVideo() {
               <>
                 <li className="nav-item">
                   <Link
+                    to="/comprar-edit"
+                    className="nav-link text-light nav-link-routes"
+                    onClick={handleMenuToggle}
+                  >
+                    <FontAwesomeIcon icon={faHandshake} style={{ marginRight: "10px" }}/> Edit Viaja
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
                     to="/subir-hotel-destino"
                     className="nav-link text-light nav-link-routes"
                     onClick={handleMenuToggle}
                   >
-                    <FontAwesomeIcon icon={faCloudUploadAlt} /> Cargar
+                    <FontAwesomeIcon icon={faCloudUploadAlt} style={{ marginRight: "10px" }}/> Cargar
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -183,7 +193,7 @@ function HeaderVideo() {
                     className="nav-link text-light nav-link-routes"
                     onClick={handleMenuToggle}
                   >
-                    <FontAwesomeIcon icon={faSuitcase} />
+                    <FontAwesomeIcon icon={faSuitcase} style={{ marginRight: "10px" }}/>
                     Total reservas: {totalReservas}
                   </Link>
                 </li>
@@ -209,7 +219,7 @@ function HeaderVideo() {
                     className="nav-link text-light nav-link-routes"
                     onClick={handleLogout}
                   >
-                    <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+                    <FontAwesomeIcon icon={faSignOutAlt} style={{ marginRight: "10px" }}/> Logout
                   </Link>
                 </li>
               </>
@@ -220,7 +230,7 @@ function HeaderVideo() {
                   className="nav-link text-light nav-link-routes"
                   onClick={handleMenuToggle}
                 >
-                  <FontAwesomeIcon icon={faSignInAlt} /> Iniciar sesión
+                  <FontAwesomeIcon icon={faSignInAlt} style={{ marginRight: "10px" }}/> Iniciar sesión
                 </Link>
               </li>
             )}
