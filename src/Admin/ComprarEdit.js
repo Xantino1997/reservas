@@ -22,7 +22,7 @@ const ProductsEdit = () => {
   const [editMode, setEditMode] = useState(false);
   const navigate = useNavigate(); 
   useEffect(() => {
-    fetch("http://localhost:4000/products") // Ajusta la ruta según tu configuración
+    fetch("https://backend-reservas.vercel.app/products") // Ajusta la ruta según tu configuración
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching data", error));
@@ -40,7 +40,7 @@ const ProductsEdit = () => {
       body: JSON.stringify(selectedProduct)
     };
   
-    fetch(`http://localhost:4000/products/${selectedProduct._id}`, requestOptions)
+    fetch(`https://backend-reservas.vercel.app/products/${selectedProduct._id}`, requestOptions)
       .then(response => {
         if (!response.ok) {
           throw new Error('Error al editar el producto');
