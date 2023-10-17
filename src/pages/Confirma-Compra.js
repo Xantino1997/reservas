@@ -14,7 +14,6 @@ const ConfirmaCompra = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // fetch(`http://localhost:4000/products/${id}`)
     fetch(`https://backend-reservas.vercel.app/procesar-pago/products/${id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
@@ -77,7 +76,6 @@ const ConfirmaCompra = () => {
     payload.numeroFactura = numeroFactura;
   
     fetch("https://backend-reservas.vercel.app/procesar-pago", {
-    // fetch("http://localhost:4000/procesar-pago", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
