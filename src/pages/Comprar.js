@@ -9,7 +9,9 @@ const Products = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://backend-reservas.vercel.app/products") // Ajusta la ruta según tu configuración
+    // /
+    // http://localhost:4000
+    fetch("https://backend-reservas.vercel.app/products") 
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching data", error));
