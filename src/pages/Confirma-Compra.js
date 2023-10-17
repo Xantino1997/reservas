@@ -14,7 +14,7 @@ const ConfirmaCompra = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://backend-reservas.vercel.app/procesar-pago/products/${id}`)
+      fetch(`https://backend-reservas.vercel.app/products/${id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
       .catch((error) => console.error("Error fetching product data", error));
