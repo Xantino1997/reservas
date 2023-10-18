@@ -38,7 +38,7 @@ function Header() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/profile`, {
+    fetch(`https://backend-reservas.vercel.app/profile`, {
       credentials: "include",
     })
       .then((response) => {
