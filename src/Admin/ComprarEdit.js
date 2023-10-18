@@ -45,16 +45,11 @@ const ProductsEdit = () => {
       }),
     };
   
-<<<<<<< HEAD
     fetch(
       `https://backend-reservas.vercel.app/products/${selectedProduct._id}`,
       requestOptions
     )
       .then((response) => {
-=======
-    fetch(`https://backend-reservas.vercel.app/products/${selectedProduct._id}`, requestOptions)
-      .then(response => {
->>>>>>> deefb1f3cdb9a0ed4dc262ebb30c25bbb51cdd84
         if (!response.ok) {
           throw new Error("Error al editar el producto");
         }
