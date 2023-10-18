@@ -15,6 +15,7 @@ const ConfirmaCompra = () => {
 
   useEffect(() => {
     fetch(`https://backend-reservas.vercel.app/products/${id}`)
+    // fetch(`https://backend-reservas.vercel.app/products/${id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
       .catch((error) => console.error("Error fetching product data", error));
@@ -75,6 +76,7 @@ const ConfirmaCompra = () => {
     const numeroFactura = generarNumeroFactura();
     payload.numeroFactura = numeroFactura;
   
+    // fetch("https://backend-reservas.vercel.app/procesar-pago", {
     fetch("https://backend-reservas.vercel.app/procesar-pago", {
       method: "POST",
       headers: {
@@ -103,12 +105,15 @@ const ConfirmaCompra = () => {
           icon: "success",
           html: mensaje,
         });
+          // Redirect despues de 5s
+          setTimeout(() => {
+            navigate('/')
+        }, 5000);
       })
       .catch((error) => {
         console.error("Hubo un problema al procesar la compra:", error);
         Swal.fire("¡Error!", "Hubo un problema al procesar la compra.", "error");
       });
-      navigate('/')
   };
 
   const descuentoAplicable =

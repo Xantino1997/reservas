@@ -102,10 +102,11 @@
   align-items: center;
   background: white;
   padding: 20px;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  border: 1px solid #000;
   width: 450px;
+  height: 450px;
 }
 
 .comprar-btn {

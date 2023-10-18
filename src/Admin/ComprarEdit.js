@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./ComprarEdit.css";
 import LogoViaje from "../assets/logoTravel.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Swal from 'sweetalert2';
-import { useNavigate } from "react-router-dom"; 
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import {
   faHome,
   faUsers,
@@ -20,9 +20,11 @@ const ProductsEdit = () => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [editMode, setEditMode] = useState(false);
-  const navigate = useNavigate(); 
+  const [viajesCantidad, setViajesCantidad] = useState(0); // Nueva cantidad de viajes
+  const navigate = useNavigate();
+
   useEffect(() => {
-    fetch("http://localhost:4000/products") // Ajusta la ruta según tu configuración
+    fetch("https://backend-reservas.vercel.app/products") // Ajusta la ruta según tu configuración
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching data", error));
@@ -35,30 +37,40 @@ const ProductsEdit = () => {
 
   const confirmEdit = () => {
     const requestOptions = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(selectedProduct)
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...selectedProduct,
+        quantity: viajesCantidad, 
+      }),
     };
   
-    fetch(`http://localhost:4000/products/${selectedProduct._id}`, requestOptions)
-      .then(response => {
+    fetch(
+      `https://backend-reservas.vercel.app/products/${selectedProduct._id}`,
+      requestOptions
+    )
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Error al editar el producto');
+          throw new Error("Error al editar el producto");
         }
         return response.json();
       })
-      .then(data => {
-        console.log('Producto editado con éxito:', data);
+      .then((data) => {
+        console.log("Producto editado con éxito:", data);
         setEditMode(false);
-        Swal.fire('¡Éxito!', 'El producto se ha editado con éxito.', 'success');
+        Swal.fire("¡Éxito!", "El producto se ha editado con éxito.", "success");
         navigate("/comprar");
       })
-      .catch(error => {
-        console.error('Error en la solicitud PUT:', error);
-        Swal.fire('¡Error!', 'Ha ocurrido un error al editar el producto.', 'error');
+      .catch((error) => {
+        console.error("Error en la solicitud PUT:", error);
+        Swal.fire(
+          "¡Error!",
+          "Ha ocurrido un error al editar el producto.",
+          "error"
+        );
       });
   };
-
+  
   const cancelEdit = () => {
     setEditMode(false);
   };
@@ -79,7 +91,11 @@ const ProductsEdit = () => {
       {products.map((product) => (
         <div key={product._id} className="product-card">
           <div className="product-quantity">
-            {product.quantity <= 3 ? (
+            {product.quantity <= 0 ? (
+              <small className="quantity-text-low" style={{ color: "red" }}>
+                Agotados
+              </small>
+            ) : product.quantity <= 3 ? (
               <small className="quantity-text-low">
                 Proximo a terminarse: {product.quantity}
               </small>
@@ -145,7 +161,8 @@ const ProductsEdit = () => {
                 })
               }
             />
-           
+          </div>
+          <div className="edit-modal-content">
             <label className="label-edit">Descuento:</label>
             <input
               className="input-edit"
@@ -158,10 +175,23 @@ const ProductsEdit = () => {
                 })
               }
             />
+            <label className="label-edit">Cantidad de Viajes:</label>{" "}
+            <input
+              className="input-edit"
+              type="number"
+              value={viajesCantidad}
+              onChange={(e) => setViajesCantidad(e.target.value)}
+            />
+          </div>
+          <div className="edit-modal-content">
             <label className="label-edit">Imagen:</label>
-          
+
             <label htmlFor="file-upload" className="label-edit-image">
-            <FontAwesomeIcon icon={faCloudUploadAlt}style={{ marginRight: "10px" }} />Subir Imagen
+              <FontAwesomeIcon
+                icon={faCloudUploadAlt}
+                style={{ marginRight: "10px" }}
+              />
+              Subir Imagen
             </label>
             <input
               type="file"

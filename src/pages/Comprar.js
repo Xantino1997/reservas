@@ -9,9 +9,9 @@ const Products = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // /
-    // http://localhost:4000
-    fetch("https://backend-reservas.vercel.app/products") 
+    // https://backend-reservas.vercel.app/
+    // https://backend-reservas.vercel.app
+    fetch("https://backend-reservas.vercel.app/products")
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching data", error));
@@ -80,7 +80,11 @@ const Products = () => {
         {remainingProducts.map((product) => (
           <div key={product._id} className="product-card remaining">
             <div className="product-quantity">
-              {product.quantity <= 3 ? (
+              {product.quantity <= 0 ? (
+                <small className="quantity-text-low" style={{ color: "red" }}>
+                  Agotados
+                </small>
+              ) : product.quantity <= 3 ? (
                 <small className="quantity-text-low">
                   Proximo a terminarse: {product.quantity}
                 </small>

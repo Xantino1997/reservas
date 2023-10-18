@@ -47,7 +47,7 @@ const FacturaComponent = ({ detallesProducto }) => {
     const detallesProducto = {
       title: detallesProducto.tile,
       precio:  detallesProducto.tile,
-      descuento:  detallesProducto.tile,
+      descuento: 10,
       localidad: "Ejemplo de localidad",
       imagen: "ruta/a/la/imagen/producto.png", // Reemplaza con la ruta de la imagen de tu producto
     };
