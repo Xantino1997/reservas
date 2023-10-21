@@ -105,12 +105,9 @@ const ConfirmaCompra = () => {
           html: mensaje,
         });
           // Redirect despues de 5s
-          //setTimeout(() => {
-           // navigate('/')
-        //}, 5000);
-
-        console.log("Payload enviado al backend:", payload);
-
+          setTimeout(() => {
+            navigate('/')
+        }, 5000);
       })
       .catch((error) => {
         console.error("Hubo un problema al procesar la compra:", error);
