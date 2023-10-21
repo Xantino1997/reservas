@@ -6,8 +6,8 @@ import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
-    <main style={{ padding: '10px'}}>
-      <Header />
+    <main >
+      <Header style={{ paddingTop: '10px', margin: '0px',boxSizing: "border-box"}}/>
       <>
         <br /> {/* Etiqueta <br> para salto de línea */}
         <br /> {/* Etiqueta <hr> para una línea horizontal */}
@@ -15,7 +15,7 @@ export default function Layout() {
         <br /> {/* Etiqueta <hr> para una línea horizontal */}
         </>
       {/* <NoticeAlert /> */}
-      <Outlet />
+      <Outlet style={{ paddingTop: '10px', margin: '0px',boxSizing: "border-box"}}/>
       <br />
       {/* <Form /> */}
       <Footer />

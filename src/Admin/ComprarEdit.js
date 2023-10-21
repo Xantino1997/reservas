@@ -4,17 +4,7 @@ import LogoViaje from "../assets/logoTravel.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import {
-  faHome,
-  faUsers,
-  faBullhorn,
-  faSuitcase,
-  faPlane,
-  faSignOutAlt,
-  faSignInAlt,
-  faCloudUploadAlt,
-  faHandshake, // Importar el icono de manos estrechadas
-} from "@fortawesome/free-solid-svg-icons";
+import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 
 const ProductsEdit = () => {
   const [products, setProducts] = useState([]);
@@ -30,8 +20,55 @@ const ProductsEdit = () => {
       .catch((error) => console.error("Error fetching data", error));
   }, []);
 
+  //RUTA PARA BORRAR PRODUCTOS
+
+  const handleDelete = (productId) => {
+    Swal.fire({
+      title: `¿Estás seguro de que deseas borrar este producto?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, borrar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://backend-reservas.vercel.app/products/${productId}`, {
+          method: "DELETE",
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Error al borrar el producto");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Producto borrado con éxito:", data);
+            Swal.fire("¡Borrado!", "El producto ha sido borrado.", "success");
+            refreshProducts();
+          })
+          .catch((error) => {
+            console.error("Error al borrar el producto:", error);
+            Swal.fire(
+              "¡Error!",
+              "Ha ocurrido un error al borrar el producto.",
+              "error"
+            );
+          });
+      }
+    });
+  };
+
+
+  const refreshProducts = () => {
+    fetch("https://backend-reservas.vercel.app/products") 
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Error al refrescar los productos", error));
+  };
+  
+
   const openEdit = (product) => {
     setSelectedProduct(product);
+    setViajesCantidad(product.quantity);
     setEditMode(true);
   };
 
@@ -41,10 +78,10 @@ const ProductsEdit = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...selectedProduct,
-        quantity: viajesCantidad, 
+        quantity: viajesCantidad,
       }),
     };
-  
+
     fetch(
       `https://backend-reservas.vercel.app/products/${selectedProduct._id}`,
       requestOptions
@@ -70,7 +107,7 @@ const ProductsEdit = () => {
         );
       });
   };
-  
+
   const cancelEdit = () => {
     setEditMode(false);
   };
@@ -118,7 +155,13 @@ const ProductsEdit = () => {
             <p className="discount-label">Descuento: {product.descuento}</p>
           )}
           <button className="comprar-btn" onClick={() => openEdit(product)}>
-            Edit
+            Editar
+          </button>
+          <button
+            className="delete-btn"
+            onClick={() => handleDelete(product._id)}
+          >
+            Borrar
           </button>
         </div>
       ))}
@@ -175,7 +218,7 @@ const ProductsEdit = () => {
                 })
               }
             />
-            <label className="label-edit">Cantidad de Viajes:</label>{" "}
+            <label className="label-edit">Cantidad de Viajes:</label>
             <input
               className="input-edit"
               type="number"

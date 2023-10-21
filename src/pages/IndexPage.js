@@ -1,294 +1,132 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState, useEffect } from "react";
 import "./stylesPages/IndexPage.css";
-import { Container, Row, Col, Nav, Tab, Carousel, Card } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faStarHalf } from "@fortawesome/free-solid-svg-icons";
 import HeaderVideo from "./HeaderVideo";
-import LikesDislikes from "./LikesDislikes";
 import Footer from "../Footer";
-
-import viaje1 from "../assets/viaje1.png";
-import viaje2 from "../assets/viaje2.png";
-import viaje3 from "../assets/viaje3.png";
-import Secondviaje1 from "../assets/SecondViaje1.png";
-import Secondviaje2 from "../assets/SecondViaje2.png";
-import Secondviaje3 from "../assets/SecondViaje3.png";
-
-import hotel1 from "../assets/hotel1.png";
-import hotel2 from "../assets/hotel2.png";
-import hotel3 from "../assets/hotel3.png";
-import Secondhotel1 from "../assets/Secondhotel1.png";
-import Secondhotel2 from "../assets/Secondhotel2.png";
-import Secondhotel3 from "../assets/Secondhotel3.png";
-
-import destino1 from "../assets/destino1.png";
-import destino2 from "../assets/destino2.png";
-import destino3 from "../assets/destino3.png";
-
-import thirdhotel1 from "../assets/hotelDestino1.png";
-import thirdhotel2 from "../assets/hotelDestino2.png";
-import thirdhotel3 from "../assets/hotelDestino3.png";
+import { Link } from "react-router-dom";
 
 function IndexPage() {
-  // Función para generar las estrellas en función del puntaje
-  function renderStars(rating) {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 >= 0.5;
+  const [products, setProducts] = useState([]);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
 
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<FontAwesomeIcon icon={faStar} className="star" key={i} />);
-    }
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://backend-reservas.vercel.app/products"); // Replace with your API endpoint
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
 
-    if (halfStar) {
-      stars.push(
-        <FontAwesomeIcon
-          icon={faStarHalf}
-          className="star half-blue"
-          key="half"
-        />
-      );
-    }
+    fetchProducts();
+  }, []);
 
-    const emptyStars = 5 - (fullStars + (halfStar ? 1 : 0));
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (autoPlay) {
+        setCurrentImage((prevImage) =>
+          prevImage === products.length - 1 ? 0 : prevImage + 1
+        );
+      }
+    }, 4000);
 
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(
-        <FontAwesomeIcon
-          icon={faStar}
-          className="star empty-star"
-          key={`empty-${i}`}
-        />
-      );
-    }
+    return () => clearInterval(interval);
+  }, [autoPlay, products.length]);
 
-    return <div className="star-rating">{stars}</div>;
-  }
+  const handleSelectImage = (index) => {
+    setSelectedImage(index);
+    setCurrentImage(index);
+    setAutoPlay(false); // Detener la reproducción automática
+    setTimeout(() => {
+      setAutoPlay(true); // Reanudar la reproducción automática después de 15 segundos
+    }, 15000);
+  };
 
-  function renderCarouselItems(images, ratings) {
-    return images.map((image, index) => (
-      <Carousel.Item key={index}>
-        <img className="d-block w-100" src={image.src} alt={image.alt} />
-        <Card.Text className="text-center rating">
-          {renderStars(ratings[index])}
-        </Card.Text>
-      </Carousel.Item>
-    ));
-  }
-
-  // Datos de ejemplo para destinos y hoteles
-  const destinosImages = [
-    { src: viaje1, alt: "Destino 1" },
-    { src: viaje2, alt: "Destino 2" },
-    { src: viaje3, alt: "Destino 3" },
-  ];
-
-  const destinosRatings = [4.5, 5, 4];
-
-  const hotelesImages = [
-    { src: hotel1, alt: "Hotel 1" },
-    { src: hotel2, alt: "Hotel 2" },
-    { src: hotel3, alt: "Hotel 3" },
-  ];
-
-  const hotelesRatings = [4.5, 5, 3.5];
-
-  const destinosImages2 = [
-    { src: Secondviaje1, alt: "Destino 1" },
-    { src: Secondviaje2, alt: "Destino 2" },
-    { src: Secondviaje3, alt: "Destino 3" },
-  ];
-
-  const destinosRatings2 = [4.5, 5, 4.5];
-
-  const hotelesImages2 = [
-    { src: Secondhotel1, alt: "Hotel 1" },
-    { src: Secondhotel2, alt: "Hotel 2" },
-    { src: Secondhotel3, alt: "Hotel 3" },
-  ];
-
-  const hotelesRatings2 = [4.0, 5, 4.5];
-
-  const destinosImages3 = [
-    { src: destino1, alt: "Destino 1" },
-    { src: destino2, alt: "Destino 2" },
-    { src: destino3, alt: "Destino 3" },
-  ];
-
-  const destinosRatings3 = [4.5, 5, 4.5];
-
-  const hotelesImages3 = [
-    { src: thirdhotel1, alt: "Hotel 1" },
-    { src: thirdhotel2, alt: "Hotel 2" },
-    { src: thirdhotel3, alt: "Hotel 3" },
-  ];
-
-  const hotelesRatings3 = [4.0, 5, 4.5];
 
   return (
     <>
       <div className="container-viajes">
         <div className="overlay">
-          <div className="content">
-            <div className="header-video">
-              <HeaderVideo />
+          <div className="header-video">
+            <HeaderVideo />
+            <div className="container-busqueda">
+              <div className="select-image-div">
+                {products.map((product, index) => (
+                  <img
+                    key={index}
+                    className={`select-image ${
+                      index === currentImage ? "active" : ""
+                    }`}
+                    src={product.imagen}
+                    alt={`Select Image ${index + 1}`}
+                    onClick={() => handleSelectImage(index)}
+                  />
+                ))}
+              </div>
             </div>
-            <h1 className="main-title">
-              <q>Tu viaje empieza hoy</q>
-            </h1>
+          </div>
+          <h1 className="main-title">
+            <q>Tu viaje empieza hoy</q>
+          </h1>
+        </div>
+        <div className="container-carousel">
+          <div className="carousel-index">
+            {products.map((product, index) => (
+              <div
+                key={index}
+                className={`carousel-item-index ${
+                  index === currentImage ? "active" : ""
+                }`}
+                style={{
+                  backgroundImage: `url(${product.imagen})`,
+                  animationDelay: `${index * 0.8}s`,
+                }}
+              >
+                <div className="carousel-content">
+                  <div className="description-elementos">
+                    <p
+                      style={{
+                        whiteSpace: "pre-wrap",
+                        wordWrap: "break-word",
+                        // overflow: "scroll",
+                      }}
+                    >
+                      {product.description}
+                    </p>
+                    <p>{product.localidad}</p>
+                    <h2 className="carousel-content-h5">{product.title}</h2>
+                  </div>
+                  <div className="description-elementos">
+                    <p>Precio: {product.precio}</p>
+                    <p>Descuento: {product.descuento}%</p>
+                    <Link to={`/confirma-compra/${product._id}`} className="carousel-btn">
+                      Ver detalles
+                    </Link>
+                    <br />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="select-image-div">
+            {products.map((product, index) => (
+              <img
+                key={index}
+                className={`select-image ${
+                  index === currentImage ? "active" : ""
+                }`}
+                src={product.imagen}
+                alt={`Select Image ${index + 1}`}
+                onClick={() => handleSelectImage(index)}
+              />
+            ))}
           </div>
         </div>
-
-        <div className="container-carrousel-general">
-          <Container className="container-general">
-            <Row className="section-columnas-pricipal">
-              <Col className="section-columnas">
-                <Tab.Container id="right-tabs-example" defaultActiveKey="first">
-                  <Row className="columna-2">
-                    <h1 className="section-title">Viajes y Destinos</h1>
-                    <Col className="columna-2" sm={3}>
-                      <Nav variant="pills">
-                        <Nav.Item>
-                          <Nav.Link eventKey="first">Cataratas</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey="second">Rio de Janeiro</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey="third">Eritrea</Nav.Link>
-                        </Nav.Item>
-                      </Nav>
-                    </Col>
-                    <Col sm={9}>
-                      <Tab.Content>
-                        <Tab.Pane eventKey="first">
-                          <div className="container-carrousel">
-                            <Carousel>
-                              {renderCarouselItems(
-                                destinosImages,
-                                destinosRatings
-                              )}
-                            </Carousel>
-                            <LikesDislikes />
-                            <Link to="/destinos" className="btn btn-primary">
-                              Ver Detalles
-                            </Link>
-                          </div>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">
-                          <div className="container-carrousel">
-                            <Carousel>
-                              {renderCarouselItems(
-                                destinosImages2,
-                                destinosRatings2
-                              )}
-                            </Carousel>
-                            <LikesDislikes />
-                            <Link to="/destinos" className="btn btn-primary">
-                              Ver Detalles
-                            </Link>
-                          </div>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="third">
-                          <div className="container-carrousel">
-                            <Carousel>
-                              {renderCarouselItems(
-                                destinosImages3,
-                                destinosRatings3
-                              )}
-                            </Carousel>
-                            <LikesDislikes />
-                            <Link to="/destinos" className="btn btn-primary">
-                              Ver Detalles
-                            </Link>
-                          </div>
-                        </Tab.Pane>
-                        {/* ... Otras pestañas de Destinos ... */}
-                      </Tab.Content>
-                    </Col>
-                  </Row>
-                </Tab.Container>
-              </Col>
-
-              <Col className="section-columnas">
-                <Tab.Container id="right-tabs-example" defaultActiveKey="first">
-                  <Row className="columna-2">
-                    <h1 className="section-title">Hoteles</h1>
-                    <Col className="columna-2" sm={3}>
-                      <Nav variant="pills">
-                        <Nav.Item>
-                          <Nav.Link eventKey="first">
-                            Hotel Emperador 2
-                          </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey="second">Fenix Found</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey="third">Hotel Franckfurt</Nav.Link>
-                        </Nav.Item>
-                      </Nav>
-                    </Col>
-                    <Col sm={9}>
-                      <Tab.Content>
-                        <Tab.Pane eventKey="first">
-                          <div className="container-carrousel">
-                            <Carousel >
-                              {renderCarouselItems(
-                                hotelesImages,
-                                hotelesRatings
-                              )}
-                            </Carousel>
-                            <LikesDislikes />
-                            <Link to="/hoteles" className="btn btn-primary">
-                              Ver Detalles
-                            </Link>
-                          </div>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">
-                          <div className="container-carrousel">
-                            <Carousel>
-                              {renderCarouselItems(
-                                hotelesImages2,
-                                hotelesRatings2
-                              )}
-                            </Carousel>
-                            <LikesDislikes />
-                            <Link to="/hoteles" className="btn btn-primary">
-                              Ver Detalles
-                            </Link>
-                          </div>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="third">
-                          <div className="container-carrousel">
-                            <Carousel>
-                              {renderCarouselItems(
-                                hotelesImages3,
-                                hotelesRatings3
-                              )}
-                            </Carousel>
-                            <LikesDislikes />
-                            <Link to="/hoteles" className="btn btn-primary">
-                              Ver Detalles
-                            </Link>
-                          </div>
-                        </Tab.Pane>
-                        {/* ... Otras pestañas de hoteles ... */}
-                      </Tab.Content>
-                    </Col>
-                  </Row>
-                </Tab.Container>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-        <div className="footer-div">
         <Footer />
       </div>
-      </div>
-    
     </>
   );
 }

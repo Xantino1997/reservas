@@ -10,16 +10,20 @@ body {
 }
 .container-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
   font-family: "Lato", sans-serif;
+  width:100%;
 }
 
 .contact-column {
   display: flex;
+  padding:5px;
   justify-content: space-around;
   flex-direction: row;
   width: 100%;
+  color:#fff;
+  magin:5px;
 }
 .contact {
   display: flex;
@@ -72,6 +76,8 @@ body {
 .copyright {
   width: 100%;
   text-align: center;
+  background-color: #ccc;
+  padding: 5px;
 }
 
 

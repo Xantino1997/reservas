@@ -14,8 +14,8 @@ const ConfirmaCompra = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`https://backend-reservas.vercel.app/products/${id}`)
-    // fetch(`https://backend-reservas.vercel.app/products/${id}`)
+    fetch(` https://backend-reservas.vercel.app/products/${id}`)
+    // fetch(` https://backend-reservas.vercel.app/products/${id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
       .catch((error) => console.error("Error fetching product data", error));
@@ -76,8 +76,8 @@ const ConfirmaCompra = () => {
     const numeroFactura = generarNumeroFactura();
     payload.numeroFactura = numeroFactura;
   
-    // fetch("https://backend-reservas.vercel.app/procesar-pago", {
-    fetch("https://backend-reservas.vercel.app/procesar-pago", {
+    // fetch(" https://backend-reservas.vercel.app/procesar-pago", {
+    fetch(" https://backend-reservas.vercel.app/procesar-pago", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -139,7 +139,7 @@ const ConfirmaCompra = () => {
 
   return (
     <div className="confirma-compra-container">
-      <div className="product-details">
+      <div className="product-details-compra">
         <h2>{product.localidad}</h2>
         <div className="product-quantity-confirmar">
           {product.quantity <= 0 ? (
@@ -185,7 +185,6 @@ const ConfirmaCompra = () => {
             <option value="visa">Visa</option>
             <option value="mastercard">MasterCard</option>
             <option value="amex">American Express</option>
-            {/* Agrega otros métodos de pago si es necesario */}
           </select>
           <div className="container-agregar">
             <button

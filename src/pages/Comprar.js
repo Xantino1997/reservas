@@ -9,9 +9,9 @@ const Products = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // https://backend-reservas.vercel.app/
-    // https://backend-reservas.vercel.app
-    fetch("https://backend-reservas.vercel.app/products")
+    //  https://backend-reservas.vercel.app/
+    //  http://localhost:4000
+    fetch(" https://backend-reservas.vercel.app/products")
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching data", error));
@@ -37,7 +37,7 @@ const Products = () => {
   };
 
   return (
-    <div className="products-container">
+    <div className="products-container-card">
       {firstFourProducts.map((product) => (
         <div key={product._id} className="product-card">
           <div className="product-quantity">
@@ -66,7 +66,7 @@ const Products = () => {
           </h5>
           <p>{product.description}</p>
           {product.descuento !== 0 && (
-            <p className="discount-label">Descuento: {product.descuento}</p>
+            <p className="discount-label">Descuento: {product.descuento}%</p>
           )}
           <div className="container-comprar-btn">
             <button className="comprar-btn" onClick={() => comprar(product)}>
@@ -78,7 +78,7 @@ const Products = () => {
 
       <div className="remaining-products">
         {remainingProducts.map((product) => (
-          <div key={product._id} className="product-card remaining">
+          <div key={product._id} className="product-card">
             <div className="product-quantity">
               {product.quantity <= 0 ? (
                 <small className="quantity-text-low" style={{ color: "red" }}>

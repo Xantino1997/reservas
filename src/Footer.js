@@ -1,5 +1,5 @@
-import {React} from "react";
-import { Link} from "react-router-dom";
+import { React } from "react";
+import { Link } from "react-router-dom";
 import "./styles/Footer.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,11 +14,9 @@ function Footer() {
 
   return (
     <>
-      <footer className="bg-dark text-light p-4">
+      <footer className="bg-dark ">
         <div className="container-footer">
-          <div className="row">
-            <div className="col-md-6"></div>
-            <div className="col-md-6 contact-column">
+            <div className="contact-column">
               <div className="contact">
                 <address className="address">
                   <h3>Contacto</h3>
@@ -79,14 +77,13 @@ function Footer() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="copyright">
-          <p>
-            &copy; {currentYear} Comunidad Hotelera. <Link> Todos los derechos
-            reservados.</Link>
-          </p>
-        </div>
       </footer>
+      <div className="copyright">
+        <p>
+          &copy; {currentYear} Comunidad Hotelera.{" "}
+          <Link> Todos los derechos reservados.</Link>
+        </p>
+      </div>
     </>
   );
 }

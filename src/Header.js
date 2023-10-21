@@ -38,7 +38,7 @@ function Header() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/profile`, {
+    fetch(`https://backend-reservas.vercel.app/profile`, {
       credentials: "include",
     })
       .then((response) => {
@@ -105,8 +105,8 @@ function Header() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav ml-auto">
+        <div className="collapse-nav ">
+          <ul className="navbar-nav  ml-auto">
             <li className="nav-item">
               <Link
                 to="/"
