@@ -5,7 +5,6 @@ import "./stylesPages/Comprar.css";
 import Swal from "sweetalert2";
 import mercadoPago from "../assets/mercadoPago.png";
 import { useNavigate } from "react-router-dom";
-import Factura from "./FacturaComponent";
 
 const ConfirmaCompra = () => {
   const { id } = useParams();
